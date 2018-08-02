@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using My_Sneaker_Wish_List.Models;
 
-namespace My_Sneaker_Wish_List.Controllers
+namespace MySneaker_Wish_List.Controllers
 {
     public class HomeController : Controller
     {
