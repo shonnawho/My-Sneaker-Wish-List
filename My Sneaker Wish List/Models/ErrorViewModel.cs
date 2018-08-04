@@ -1,6 +1,6 @@
 using System;
 
-namespace My_Sneaker_Wish_List.Models
+namespace MySneakerWishList.Models
 {
     public class ErrorViewModel
     {

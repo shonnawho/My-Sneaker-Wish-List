@@ -11,20 +11,21 @@ namespace MySneakerWishList.ViewModels
     public class AddShoeViewModel
     {
         [Required]
-        [Display(Name = "Cheese Name")]
+        [Display(Name = "Nme of Shoe")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "You must give your cheese a description")]
         public string Description { get; set; }
 
         [Required]
-        [Display(Name ="Category")]
+        [Display(Name = "Category")]
         public int CategoryID { get; set; }
 
-        public List<SelectListItem>Categories { get; set; }
+        public List<SelectListItem> Categories { get; set; }
 
         public AddShoeViewModel(IEnumerable<ShoeCategory> categories)
         {
+
             Categories = new List<SelectListItem>();
 
             foreach (var category in categories)
@@ -33,14 +34,15 @@ namespace MySneakerWishList.ViewModels
                 {
                     Value = category.ID.ToString(),
                     Text = category.Name
-
                 });
 
-            }
 
+
+            }
         }
 
-        
+        public AddShoeViewModel() { }
+
     }
 }
 

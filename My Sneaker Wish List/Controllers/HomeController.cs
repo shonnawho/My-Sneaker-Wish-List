@@ -4,7 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using My_Sneaker_Wish_List.Models;
+using MySneakerWishList.Models;
 
 namespace MySneaker_Wish_List.Controllers
 {
