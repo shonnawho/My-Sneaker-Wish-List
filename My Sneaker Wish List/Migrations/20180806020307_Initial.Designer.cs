@@ -10,8 +10,8 @@ using MySneakerWishList.Data;
 namespace MySneakerWishList.Migrations
 {
     [DbContext(typeof(ShoeDbContext))]
-    [Migration("20180804013552_initial")]
-    partial class initial
+    [Migration("20180806020307_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -83,6 +83,23 @@ namespace MySneakerWishList.Migrations
                     b.HasIndex("ShoeMenuShoeID", "ShoeMenuMenuID");
 
                     b.ToTable("ShoeMenus");
+                });
+
+            modelBuilder.Entity("MySneakerWishList.Models.User.User", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("Password");
+
+                    b.Property<string>("Username");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("MySneakerWishList.Models.Shoe", b =>

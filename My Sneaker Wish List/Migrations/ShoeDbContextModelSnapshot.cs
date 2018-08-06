@@ -83,6 +83,23 @@ namespace MySneakerWishList.Migrations
                     b.ToTable("ShoeMenus");
                 });
 
+            modelBuilder.Entity("MySneakerWishList.Models.User.User", b =>
+                {
+                    b.Property<int>("UserId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email");
+
+                    b.Property<string>("Password");
+
+                    b.Property<string>("Username");
+
+                    b.HasKey("UserId");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("MySneakerWishList.Models.Shoe", b =>
                 {
                     b.HasOne("MySneakerWishList.Models.ShoeCategory", "Category")

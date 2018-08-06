@@ -55,7 +55,10 @@ namespace MySneakerWishList
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Shoe}/{action=Index}/{id?}");
+                    template: "{controller=Home}/{action=Index}/{id?}" 
+                   // defaults: new { controller = "Home", action = "Index" }
+                    );
+                    
             });
             context.Database.EnsureCreated();
         }
