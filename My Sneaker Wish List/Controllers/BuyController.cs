@@ -8,7 +8,7 @@ namespace MySneakerWishList.Controllers
 {
     public class BuyController : Controller
     {
-        public IActionResult Buy()
+        public IActionResult Index()
         {
             return View();
         }
