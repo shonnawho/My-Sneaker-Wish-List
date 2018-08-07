@@ -11,7 +11,7 @@ namespace MySneakerWishList.ViewModels
     public class AddShoeViewModel
     {
         [Required]
-        [Display(Name = "Nme of Shoe")]
+        [Display(Name = "Name of Shoe")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "You must give your cheese a description")]
