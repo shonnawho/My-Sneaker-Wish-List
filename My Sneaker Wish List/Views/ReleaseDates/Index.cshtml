@@ -1,15 +1,62 @@
 ﻿
+
 @{
-    
+
 }
 
 <!DOCTYPE html>
-
 <html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
+
 <body>
+    <header>
+        <div class="header">
+
+            <h1>Release Dates</h1>
+            
+        </div>
+
+
+    </header>
+    <main>
+        <article>
+
+
+                <div class="row">
+                    <div class="column">
+                        <h2>"Jordan Raptor 4 "</h2>
+                        <img src="/images/jordan4.jpg" alt="Picture" height="230" width="320">
+
+
+                        <p >
+                            You're sure to turn heads with The Jordan Raptor 4. The red and purple compliments its black sleak design. 
+                        </p>
+
+                        <button type="button" onclick="location.href='@Url.Action("Index", "Buy")'">Buy Here</button>
+                        <button type="button" onclick="location.href='@Url.Action("Index", "WishList")'">Add To Wish List</button>
+                    </div>
+
+                    
+
+
+
+                    <div class="column">
+                        <h2>"Wmns Air Max 97"</h2>
+                        <img src="~/images/AirMax97.jpg" alt="Picture" height="230" width="250">
+                        <p>This one of a kind colorway was mixed to perfection. This eye-popping, eye-catching one of a kind colorway is sure to make heads turn.Stand-out from the crowd with these dope hypebeast customs.</p>
+                        <button type="button" onclick="location.href='@Url.Action("Index", "Buy")'">Buy Here</button>
+                        <button type="button" onclick="location.href='@Url.Action("Index", "WishList")'">Add To Wish List</button>
+
+
+                    </div>
+                </div>
+
+
+
+                    
+
+
+        </article>
+    </main>
+
+    
 </body>
-</html>
