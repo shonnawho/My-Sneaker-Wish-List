@@ -5,6 +5,7 @@ using MySneakerWishList.ViewModels;
 using MySneakerWishList.Data;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MySneakerWishList.Controllers
 {
@@ -17,6 +18,7 @@ namespace MySneakerWishList.Controllers
             context = dbContext;
         }
 
+        [Authorize]
         public IActionResult Index()
         {
             List<Shoe> shoes = context.Shoes.Include(c => c.Category).ToList();
@@ -57,6 +59,23 @@ namespace MySneakerWishList.Controllers
             return View(addShoeViewModel);
 
         }
+
+        public IActionResult Category(int id)
+        {
+            if (id == 0)
+            {
+                return Redirect("/Category");
+            }
+
+            ShoeCategory theCategory = context.Categories
+                .Include(cat => cat.Shoes)
+                .Single(cat => cat.ID == id);
+
+            ViewBag.title = "Shoess in category: " + theCategory.Name;
+
+            return View("Index", theCategory.Shoes);
+        }
+
 
     }
 }

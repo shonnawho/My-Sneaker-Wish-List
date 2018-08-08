@@ -11,7 +11,7 @@ using MySneakerWishList.ViewModels;
 
 namespace MySneakerWishList.Controllers
 {
-    public class CategoryController : Controller
+    public class CategoryController : Microsoft.AspNetCore.Mvc.Controller
     {
 
         public IActionResult Index()

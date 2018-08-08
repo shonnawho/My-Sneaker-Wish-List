@@ -11,6 +11,8 @@ namespace MySneakerWishList.ViewModels
     {
         [Display(Name = "Email Address")]
         [Required]
+        [EmailAddress]
+        [MaxLength(256)] 
         public string Email { get; set; }
 
         [Display(Name = "User Name")]
@@ -19,13 +21,18 @@ namespace MySneakerWishList.ViewModels
         public string UserName { get; set; }
 
         [Required]
+        [Display(Name = "Password")]
         [MaxLength(25)]
         [MinLength(6)]
+        [DataType(DataType.Password)]
         public string Password { get; set; }
 
-        [Display(Name = "Confirm Password")]
         [Required]
-        [Compare("Password")]
+        [Display(Name = "Confirm Password")]
+        [MaxLength(25)]
+        [MinLength(6)]
+        [DataType(DataType.Password)]
+        [Compare("Password", ErrorMessage ="Passwords do not match")]
         public string ConfirmPassword { get; set; }
 
        

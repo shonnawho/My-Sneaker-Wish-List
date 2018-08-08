@@ -35,9 +35,7 @@ namespace MySneakerWishList.ViewModels
                     Value = category.ID.ToString(),
                     Text = category.Name
                 });
-
-
-
+    
             }
         }
 

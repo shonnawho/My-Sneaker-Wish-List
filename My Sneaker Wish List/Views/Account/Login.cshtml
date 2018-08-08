@@ -1,47 +1,38 @@
-﻿@model MySneakerWishList.ViewModels.AccountRegistrationViewModel
+﻿@model MySneakerWishList.ViewModels.LoginViewModel
 
 @{
     
 }
 
 
-<!DOCTYPE html>
+<form method="post" asp-action="Login" asp-controller="Account">
+    <div asp-validation-summary="All"></div>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Add</title>
-</head>
-<body>
+    <div>
+        <label asp-for="Email"></label>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+    <div>
 
-    <h4>Login</h4>
-    <hr />
-    <div class="row">
-        <div class="col-md-4">
-         <form>   
-                <div class="form-group">
-                    <label asp-for="UserName" class="control-label"></label>
-                    <input asp-for="UserName" class="form-control" />
-                    <span asp-validation-for="UserName" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Password" class="control-label"></label>
-                    <input asp-for="Password" class="form-control" />
-                    <span asp-validation-for="Password" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="ConfirmPassword" class="control-label"></label>
-                    <input asp-for="ConfirmPassword" class="form-control" />
-                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Login" />
-                </div>
-            </form>
-        </div>
+        <label asp-for="Password"></label>
+        <input asp-for="Password" />
+        <span asp-validation-for="Password"></span>
+
+
     </div>
 
-    
+    <div>
+        <label asp-for="RememberMe"></label>
+        <input asp-for="RememberMe" />
+        <span asp-validation-for="RememberMe"></span>
+    </div>
 
-</body>
-</html>
+    <div><input type="submit" value="Log In" /></div>
+
+
+
+
+
+</form>
+

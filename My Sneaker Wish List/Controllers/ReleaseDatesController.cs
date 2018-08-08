@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MySneakerWishList.Controllers
 {
-    public class ReleaseDatesController : Controller
+    public class ReleaseDatesController : Microsoft.AspNetCore.Mvc.Controller
     {
         public IActionResult Index()
         {

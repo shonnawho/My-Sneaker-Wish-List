@@ -1,20 +1,32 @@
 ﻿using MySneakerWishList.ViewModels;
-using Microsoft.AspNetCore.Http;
+using MySneakerWishList.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using MySneakerWishList.Data;
 using MySneakerWishList.Models.User;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 
 namespace MySneakerWishList.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : Microsoft.AspNetCore.Mvc.Controller
     {
         public ShoeDbContext context;
+        /* private readonly UserManager<IdentityUser> _userManager;
+         private readonly object _signInManager; 
+         public object _signIManager { get; }*/
+
 
         public AccountController(ShoeDbContext dbContext)
         {
             context = dbContext;
         }
+
+        /* public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+         {
+             _userManager = userManager;
+             _signInManager = signInManager;
+         }*/
 
         public IActionResult Index()
         {
@@ -28,9 +40,9 @@ namespace MySneakerWishList.Controllers
 
 
         [HttpPost]
-
         public IActionResult RegisterUser(AccountRegistrationViewModel model)
         {
+
 
             User u = new User
             {
@@ -42,14 +54,31 @@ namespace MySneakerWishList.Controllers
             context.Users.Add(u);
             context.SaveChanges();
 
-            return Redirect("/"); 
-        }  
 
-        public IActionResult Login()
-        {
-            return View();
+            {
+                return Redirect("/Account/Index");
+            }
         }
 
+        [HttpGet]
+        public IActionResult Login()
+        {
+            LoginViewModel loginViewModel = new LoginViewModel();
+            {
+                return View(loginViewModel);
+            }
+        }
 
+        [HttpPost]
+        public IActionResult Login(LoginViewModel loginViewmodel)
+        {
+
+            if (ModelState.IsValid)
+            {
+                return Redirect("/Account/Index");
+            }
+            return View();
+        }
     }
 }
+ 
