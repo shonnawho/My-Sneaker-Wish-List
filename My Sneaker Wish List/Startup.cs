@@ -29,6 +29,9 @@ namespace MySneakerWishList
             services.AddDbContext<ShoeDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+           // services.AddIdentity<>()
+              //  .AddEntityFramworkStores<ShoeDbContext>()
+
             // Add framework services.
             services.AddSession();
             services.AddMvc();

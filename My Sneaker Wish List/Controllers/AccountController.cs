@@ -6,6 +6,7 @@ using MySneakerWishList.Data;
 using MySneakerWishList.Models.User;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+using MySqlX.XDevAPI;
 
 namespace MySneakerWishList.Controllers
 {
@@ -79,6 +80,7 @@ namespace MySneakerWishList.Controllers
             }
             return View();
         }
+
     }
 }
  

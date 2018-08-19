@@ -18,7 +18,7 @@ namespace MySneakerWishList.Controllers
             context = dbContext;
         }
 
-        [Authorize]
+        //[Authorize]
         public IActionResult Index()
         {
             List<Shoe> shoes = context.Shoes.Include(c => c.Category).ToList();
