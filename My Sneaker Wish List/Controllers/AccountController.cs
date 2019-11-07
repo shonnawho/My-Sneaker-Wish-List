@@ -44,7 +44,7 @@ namespace MySneakerWishList.Controllers
         public IActionResult RegisterUser(AccountRegistrationViewModel model)
         {
 
-
+            //Adds users to database
             User u = new User
             {
                 Password = model.Password,
@@ -54,10 +54,11 @@ namespace MySneakerWishList.Controllers
 
             context.Users.Add(u);
             context.SaveChanges();
+        
 
 
             {
-                return Redirect("/Account/Index");
+                return Redirect("/Account/UserPage");
             }
         }
 
@@ -76,7 +77,7 @@ namespace MySneakerWishList.Controllers
 
             if (ModelState.IsValid)
             {
-                return Redirect("/Account/Index");
+                return Redirect("/Account/UserPage");
             }
             return View();
         }

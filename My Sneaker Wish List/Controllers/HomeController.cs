@@ -15,7 +15,7 @@ namespace MySneaker_Wish_List.Controllers
             return View();
         }
 
-        public IActionResult About()
+        /**public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
 
@@ -32,6 +32,6 @@ namespace MySneaker_Wish_List.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        }**/
     }
 }
