@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using MySneakerWishList.Data;
-using MySneakerWishList.Models;
 using MySneakerWishList.ViewModels;
+using MySneakerWishList.Models;
+using MySneakerWishList.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace MySneakerWishList.Controllers
 {
-    public class CategoryController : Microsoft.AspNetCore.Mvc.Controller
+    public class CategoryController : Controller
     {
 
         public IActionResult Index()

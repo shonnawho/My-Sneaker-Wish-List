@@ -7,11 +7,14 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 
+
 namespace MySneakerWishList.Controllers
 {
     public class ShoeController : Controller
-    {
-        public ShoeDbContext context;
+    
+    {   
+       
+        private ShoeDbContext context;
 
         public ShoeController(ShoeDbContext dbContext)
         {
@@ -41,7 +44,9 @@ namespace MySneakerWishList.Controllers
             {
                 ShoeCategory newShoeCategory =
                     context.Categories.Single(c => c.ID == addShoeViewModel.CategoryID);
-                // Add the new cheese to my existing cheeses
+
+
+                // Add the new shoe to my existing shoes
                 Shoe newShoe = new Shoe
                 {
                     Name = addShoeViewModel.Name,
@@ -74,6 +79,22 @@ namespace MySneakerWishList.Controllers
             ViewBag.title = "Shoess in category: " + theCategory.Name;
 
             return View("Index", theCategory.Shoes);
+        }
+
+
+        [HttpPost]
+        public IActionResult Remove(int[] shoeIDs)
+        {
+            foreach (int shoeId in shoeIDs)
+            {
+                Shoe theShoe = context.Shoes.Single(c => c.ID == shoeId);
+                context.Shoes.Remove(theShoe);
+            
+            }
+
+            context.SaveChanges();
+
+            return Redirect("/");
         }
 
 
