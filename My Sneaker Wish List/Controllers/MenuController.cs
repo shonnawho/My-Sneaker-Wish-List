@@ -6,16 +6,16 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CheeseMVC.Controllers
+namespace MySneakerWishList.Controllers
 {
     public class MenuController : Controller
 
     {
         private readonly CheeseDbContext context;
 
-        //private CheeseDbContext context;
+        //private ShoeDbContext context;
 
-        public MenuController(CheeseDbContext dbContext)
+        public MenuController(ShoeDbContext dbContext)
         {
             context = dbContext;
         }
@@ -55,9 +55,9 @@ namespace CheeseMVC.Controllers
         public IActionResult ViewMenu(int id)
         {
 
-         List<CheeseMenu> items = context
-            .CheseseMenus
-            .Include(item => item.Cheese)
+         List<ShoeMenu> items = context
+            .ShoeMenus
+            .Include(item => item.Shoe)
             .Where(cm => cm.MenuID == id)
             .ToList();
 
@@ -75,8 +75,8 @@ namespace CheeseMVC.Controllers
         public IActionResult AddItem(int id)
         {
             Menu menu = context.Menus.Single(m => m.ID == id);
-            List<Cheese> cheeses = context.Cheeses.ToList();
-            return View(new AddMenuItemViewModel(menu, cheeses));
+            List<Shoe> cheeses = context.Shoes.ToList();
+            return View(new AddMenuItemViewModel(menu, shoes));
         }
 
         [HttpPost]
@@ -84,22 +84,22 @@ namespace CheeseMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-                var cheeseID = addMenuItemViewModel.CheeseID;
+                var shoeID = addMenuItemViewModel.ShoeID;
                 var menuID = addMenuItemViewModel.MenuID;
 
-                List<CheeseMenu> existingItems = context.CheseseMenus
-                    .Where(cm => cm.CheeseID == cheeseID)
+                List<ShoeMenu> existingItems = context.ShoeMenus
+                    .Where(cm => cm.ShoeID == ShoeID)
                     .Where(cm => cm.MenuID == menuID).ToList();
                 if (existingItems.Count == 0)
                 {
 
-                    CheeseMenu menuItem = new CheeseMenu
+                    ShoeMenu shoeItem = new ShoeMenu
                     {
-                        Cheese = context.Cheeses.Single(c => c.ID == cheeseID),
+                        Shoe = context.Shoes.Single(c => c.ID == shoeID),
                         Menu = context.Menus.Single(m => m.ID == menuID)
                     };
 
-                    context.CheseseMenus.Add(menuItem);
+                    context.ShoeMenus.Add(menuItem);
                     context.SaveChanges();
 
                 }
