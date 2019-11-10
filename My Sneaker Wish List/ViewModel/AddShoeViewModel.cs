@@ -23,26 +23,28 @@ namespace MySneakerWishList.ViewModels
 
         public List<SelectListItem> Categories { get; set; }
 
-        public AddShoeViewModel(IEnumerable<ShoeCategory> categories)
-        {
+		public AddShoeViewModel()
+		{
 
-            Categories = new List<SelectListItem>();
+		}
 
-            foreach (var category in categories)
-            {
-                Categories.Add(new SelectListItem
-                {
-                    Value = category.ID.ToString(),
-                    Text = category.Name
-                });
-    
-            }
-        }
+		public AddShoeViewModel(IEnumerable<ShoeCategory> categories)
+		{
+			Categories = new List<SelectListItem>();
 
-        public AddShoeViewModel() { }
+			foreach (var item in categories)
+			{
+				Categories.Add(new SelectListItem()
+				{
+					Text = item.Name,
+					Value = Convert.ToString(item.ID)
+				});
+			}
 
-    }
+		}
+	}
 }
+
 
 
 

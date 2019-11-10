@@ -5,15 +5,11 @@ using MySneakerWishList.ViewModels;
 using MySneakerWishList.Data;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Authorization;
-
 
 namespace MySneakerWishList.Controllers
 {
     public class ShoeController : Controller
-    
-    {   
-       
+    {
         private ShoeDbContext context;
 
         public ShoeController(ShoeDbContext dbContext)
@@ -21,38 +17,33 @@ namespace MySneakerWishList.Controllers
             context = dbContext;
         }
 
-        //[Authorize]
+        // GET: /<controller>/
         public IActionResult Index()
         {
-            List<Shoe> shoes = context.Shoes.Include(c => c.Category).ToList();
-
+             IList<Shoe> shoes = context.Shoes.Include(c => c.Category).ToList();
+            
             return View(shoes);
         }
 
         public IActionResult Add()
         {
-            AddShoeViewModel addShoeViewModel = new AddShoeViewModel(context.Categories.ToList());
-
+            var listOfCategories = context.Categories.ToList();
+            AddShoeViewModel addShoeViewModel = new AddShoeViewModel(listOfCategories);
             return View(addShoeViewModel);
         }
-
 
         [HttpPost]
         public IActionResult Add(AddShoeViewModel addShoeViewModel)
         {
             if (ModelState.IsValid)
             {
-                ShoeCategory newShoeCategory =
-                    context.Categories.Single(c => c.ID == addShoeViewModel.CategoryID);
-
-
-                // Add the new shoe to my existing shoes
+                ShoeCategory catg = context.Categories.Single(s => s.ID == addShoeViewModel.CategoryID);
+                // Add the new cheese to my existing cheeses
                 Shoe newShoe = new Shoe
                 {
                     Name = addShoeViewModel.Name,
                     Description = addShoeViewModel.Description,
-                    Category = newShoeCategory
-
+                    Category = catg
                 };
 
                 context.Shoes.Add(newShoe);
@@ -62,41 +53,27 @@ namespace MySneakerWishList.Controllers
             }
 
             return View(addShoeViewModel);
-
         }
 
-        public IActionResult Category(int id)
+        public IActionResult Remove()
         {
-            if (id == 0)
-            {
-                return Redirect("/Category");
-            }
-
-            ShoeCategory theCategory = context.Categories
-                .Include(cat => cat.Shoes)
-                .Single(cat => cat.ID == id);
-
-            ViewBag.title = "Shoess in category: " + theCategory.Name;
-
-            return View("Index", theCategory.Shoes);
+            ViewBag.title = "Remove Shoes";
+            ViewBag.shoes = context.Shoes.ToList();
+            return View();
         }
-
 
         [HttpPost]
-        public IActionResult Remove(int[] shoeIDs)
+        public IActionResult Remove(int[] shoeIds)
         {
-            foreach (int shoeId in shoeIDs)
+            foreach (int shoeId in shoeIds)
             {
                 Shoe theShoe = context.Shoes.Single(c => c.ID == shoeId);
                 context.Shoes.Remove(theShoe);
-            
             }
 
             context.SaveChanges();
 
-            return Redirect("/");
+            return Redirect("/Shoe");
         }
-
-
     }
 }

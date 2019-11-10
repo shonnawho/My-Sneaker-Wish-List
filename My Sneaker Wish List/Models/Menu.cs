@@ -10,7 +10,7 @@ namespace MySneakerWishList.Models
         public int ID { get; set; }
         public string Name { get; set; }
 
-        public IList<ShoeMenu> ShoeMenus { get; set; } = new List<ShoeMenu>();
+       // public IList<ShoeMenu> ShoeMenus { get; set; } = new List<ShoeMenu>();
 
         //public static implicit operator string(Menu v)
         //{

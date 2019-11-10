@@ -12,15 +12,15 @@ namespace MySneakerWishList.Data
 
         public DbSet<Menu> Menus { get; set; }
 
-        public DbSet<ShoeMenu> ShoeMenus { get; set; }
+       // public DbSet<ShoeMenu> ShoeMenus { get; set; }
 
         public DbSet<User> Users { get; set; }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+       /* protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ShoeMenu>()
                 .HasKey(c => new { c.ShoeID, c.MenuID});
-        }
+        }*/
 
 
 
