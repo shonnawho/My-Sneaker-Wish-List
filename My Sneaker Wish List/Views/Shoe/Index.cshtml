@@ -1,38 +1,60 @@
 ﻿@model List<MySneakerWishList.Models.Shoe>
 
+@{
 
 
+}
+
+
+
+<style>
+	table {
+		font-family: arial, sans-serif;
+		border-collapse: collapse;
+		width: 100%;
+	}
+
+	td, th {
+		border: 1px solid #dddddd;
+		text-align: left;
+		padding: 8px;
+	}
+
+	tr:nth-child(even) {
+		background-color: #dddddd;
+	}
+</style>
 
 <h1>Your Sneaker Wish List</h1>
 
 <table class="table">
 
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Category</th>
-        </tr>
-
-    
+	<tr>
+		<th>Name</th>
+		<th>Description</th>
+		<th>Category</th>
+	</tr>
 
 
-    @foreach (var shoe in Model)
-    {
-        <tr>
-            <td>@shoe.Name </td>
-            <td>@shoe.Description</td>
-            <td>@shoe.Category.Name</td>
-        </tr>
-    }
+
+
+	@foreach (var shoe in Model)
+	{
+		<tr>
+			<td>@shoe.Name </td>
+			<td>@shoe.Description</td>
+			<td>@shoe.Category.Name</td>
+		</tr>
+	}
 </table>
 
 @if (Model.Count == 0)
 {
-    <p>No shoes yet!</p>
+	<p>No shoes yet!</p>
 }
 
-    <td>
+<td>
 
-        <a asp-controller="Shoe" asp-action="Add">Add </a> |
-        <a asp-controller="Shoe" asp-action="Remove">Remove</a>
-    </td>
+	<a asp-controller="Shoe" asp-action="Add">Add </a> |
+	<a asp-controller="Shoe" asp-action="Remove">Remove</a>
+</td>
