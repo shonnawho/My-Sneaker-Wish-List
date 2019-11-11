@@ -8,7 +8,8 @@ namespace MySneakerWishList.ViewModels
 {
     public class LoginViewModel
     {
-        [Required]
+		public static bool UserName { get; internal set; }
+		[Required]
         [EmailAddress]
 
         public string Email { get; set; }

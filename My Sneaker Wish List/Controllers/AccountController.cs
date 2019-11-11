@@ -2,11 +2,15 @@
 using MySneakerWishList.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using MySneakerWishList.Data;
+//using MySneakerWishList.Data;
 using MySneakerWishList.Models.User;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
+//using Microsoft.AspNetCore.Identity;
 using MySqlX.XDevAPI;
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Linq;
+using System.Web.Security
 
 namespace MySneakerWishList.Controllers
 {
@@ -58,7 +62,7 @@ namespace MySneakerWishList.Controllers
 
 
             {
-                return Redirect("/Account/UserPage");
+                return Redirect("/Shoe/Add");
             }
         }
 
@@ -67,19 +71,36 @@ namespace MySneakerWishList.Controllers
         {
             LoginViewModel loginViewModel = new LoginViewModel();
             {
-                return View(loginViewModel);
+                return View();
             }
         }
 
-        [HttpPost]
-        public IActionResult Login(LoginViewModel loginViewmodel)
-        {
+		
+		[HttpPost]
+		[ValidateAntiForgeryToken]
+        public IActionResult Login(MySneakerWishList.Models.User loginViewmodel)
 
+        {
+			using (ShoedbContext db = 
+
+
+			
+
+			
+
+
+
+	
+
+			
+			
             if (ModelState.IsValid)
             {
-                return Redirect("/Account/UserPage");
+				FormsAuthentication.SetA
+				Session[]
+                return Redirect("/Shoe/Add");
             }
-            return View();
+            return View();*/
         }
 
     }
