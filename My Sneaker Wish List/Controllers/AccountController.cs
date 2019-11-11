@@ -10,7 +10,7 @@ using MySqlX.XDevAPI;
 using System.Data.SqlClient;
 using System.Configuration;
 using System.Linq;
-using System.Web.Security
+using MySneakerWishList.Data;
 
 namespace MySneakerWishList.Controllers
 {
@@ -78,29 +78,15 @@ namespace MySneakerWishList.Controllers
 		
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-        public IActionResult Login(MySneakerWishList.Models.User loginViewmodel)
+        public IActionResult Login(LoginViewModel loginViewmodel)
 
         {
-			using (ShoedbContext db = 
-
-
-			
-
-			
-
-
-
-	
-
-			
-			
             if (ModelState.IsValid)
             {
-				FormsAuthentication.SetA
-				Session[]
+				
                 return Redirect("/Shoe/Add");
             }
-            return View();*/
+            return View();
         }
 
     }
