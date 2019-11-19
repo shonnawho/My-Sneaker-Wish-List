@@ -1,48 +1,55 @@
 ﻿@model MySneakerWishList.ViewModels.LoginViewModel
 
-@{
-    
-}
-
-
 <!DOCTYPE html>
 
 <html>
 <head>
 
-    <meta name="viewport" content="width=device-width" />
-    <title>Login</title>
-    
+	<meta name="viewport" content="width=device-width" />
+	<title>Login</title>
+
 </head>
 <body>
+	<h4>Login</h4>
+	<hr />
+	<div class="row">
+		<div class="col-md-4">
+			<form action="@Url.Action("Login", "Account")" method="post">
 
-    <form method="post" asp-action="Login" asp-controller="Account">
-        <div asp-validation-summary="All"></div>
+				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-        <div>
-            <label asp-for="Email"></label>
-            <input asp-for="Email" />
-            <span asp-validation-for="Email"></span>
-        </div>
 
-        <div>
-            <label asp-for="Password"></label>
-            <input asp-for="Password" />
-            <span asp-validation-for="Password"></span>
-        </div>
 
-        <div>
-            <label asp-for="RememberMe"></label>
-            <input asp-for="RememberMe" />
-            <span asp-validation-for="RememberMe"></span>
-        </div>
+				<div>
+					<label asp-for="Email"></label>
+					<input asp-for="Email" />
+					<span asp-validation-for="Email"></span>
+				</div>
 
-        <div>
-            <input type="submit" value="Log In" />
-            <input type="reset" value="Clear" />
-        </div>
+				<div>
+					<label asp-for="Password"></label>
+					<input asp-for="Password" />
+					<span asp-validation-for="Password"></span>
+				</div>--
 
-    </form>
-    </body>
+				<div>
+
+					<label asp-for="RememberMe"></label>
+					<input asp-for="RememberMe" />
+					<span asp-validation-for="RememberMe"></span>
+				</div>
+
+				<div>
+					<input type="submit" value="Log In" />
+					<input type="reset" value="Clear" />
+				</div>
+
+			</form>
+		</div>
+	</div>
+</body>
 </html>
+
+
+
 

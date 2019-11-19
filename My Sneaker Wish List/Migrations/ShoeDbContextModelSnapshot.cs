@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MySneakerWishList.Data;
 
-namespace MySneakerWishList.Migrations
+namespace MySneakerWishList1.Migrations
 {
     [DbContext(typeof(ShoeDbContext))]
     partial class ShoeDbContextModelSnapshot : ModelSnapshot

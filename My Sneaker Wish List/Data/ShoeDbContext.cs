@@ -10,23 +10,33 @@ namespace MySneakerWishList.Data
 
         public DbSet<ShoeCategory> Categories { get; set; }
 
-        public DbSet<Menu> Menus { get; set; }
+        //public DbSet<Menu> Menus { get; set; }
 
        // public DbSet<ShoeMenu> ShoeMenus { get; set; }
 
         public DbSet<User> Users { get; set; }
 
-       /* protected override void OnModelCreating(ModelBuilder modelBuilder)
+		public DbSet<UsersShoes> UsersShoes { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ShoeMenu>()
-                .HasKey(c => new { c.ShoeID, c.MenuID});
-        }*/
+			//modelBuilder.Entity<Menu>()
+			//    .HasKey(c => new { c.ShoeID, c.MenuID});
 
-
+			base.OnModelCreating(modelBuilder);
+		}
 
         public ShoeDbContext(DbContextOptions<ShoeDbContext> options)
             : base(options)
         { }
 
-    }
+		public ShoeDbContext()
+		{
+		}
+
+
+		//public ShoeDbContext()
+		//{
+		//}
+	}
 }

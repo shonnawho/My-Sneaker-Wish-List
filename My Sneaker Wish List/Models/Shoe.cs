@@ -10,10 +10,9 @@ namespace MySneakerWishList.Models
         public ShoeCategory Category { get; set; }
         public int ID { get; set; }
         public int CategoryID { get; set; }
-		//public int UsersID { get; set;}
-
-        //public List<ShoeMenu> ShoeMenus { get; set; }
-    }
+		
+		//public List<ShoeMenu> ShoeMenus { get; set; }
+	}
 
 
 }
