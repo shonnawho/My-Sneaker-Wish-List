@@ -13,6 +13,7 @@ using System.Linq;
 using MySneakerWishList.Data;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Http;
+using MySneakerWishList.ViewModel;
 
 namespace MySneakerWishList.Controllers
 {
@@ -20,7 +21,7 @@ namespace MySneakerWishList.Controllers
     {
         public ShoeDbContext context;
 
-		public object EmailSession { get; private set; }
+		public object EmailSession { get; set; }
 
 		/* private readonly UserManager<IdentityUser> _userManager;
 private readonly object _signInManager; 
@@ -49,13 +50,14 @@ public object _signIManager { get; }*/
         }
 
 
-        [HttpPost]
+		[HttpPost]
         public IActionResult RegisterUser(AccountRegistrationViewModel model)
         {
 
             //Adds users to database
             User u = new User
             {
+
                 Password = model.Password,
                 Email = model.Email,
                 Username = model.UserName
@@ -71,7 +73,32 @@ public object _signIManager { get; }*/
             }
         }
 
-        [HttpGet]
+		[HttpPost]
+		public IActionResult RegisterSeller(SellerViewModel model)
+		{
+
+			//Adds Seller to database
+			User s = new User
+			{
+
+				Password = model.Password,
+				Email = model.Email,
+				Username = model.UserName
+			};
+
+			context.Users.Add(s);
+			context.SaveChanges();
+
+
+
+			{
+				return Redirect("/Shoe/Add");
+			}
+		}
+
+
+
+		[HttpGet]
 		
         public IActionResult Login()
         {
@@ -81,7 +108,7 @@ public object _signIManager { get; }*/
             }
         }
 
-		//[Route("login")]
+		
 		[HttpPost]
 
 		public IActionResult Login(LoginViewModel model)
@@ -107,27 +134,11 @@ public object _signIManager { get; }*/
 		}
 
 
-		/*public IActionResult Login(string username, string password)
-		{
-			if (username != null && password != null && username.Equals("acc1") && password.Equals("123"))
-			{
-				HttpContext.Session.SetString("username", username);
-				return View("Success");
-			}
-
-			else
-			{
-				ViewBag.error = "Invalid Account";
-				return View("Index");
-			}
-		}*/
-
-		[Route("logout")]
 		[HttpGet]
 		public IActionResult Logout()
 		{
-			HttpContext.Session.Remove("username");
-			return RedirectToAction("Index");
+			HttpContext.Session.Remove("email");
+			return RedirectToAction("Index", "Login");
 
 		}
 
