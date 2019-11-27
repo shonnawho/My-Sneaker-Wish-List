@@ -13,7 +13,7 @@ using System.Linq;
 using MySneakerWishList.Data;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Http;
-using MySneakerWishList.ViewModel;
+using MySneakerWishList.ViewModels;
 
 namespace MySneakerWishList.Controllers
 {

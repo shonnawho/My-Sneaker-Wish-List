@@ -39,14 +39,14 @@ namespace MySneakerWishList.Controllers
             {
                 ShoeCategory catg = context.Categories.Single(s => s.ID == addShoeViewModel.CategoryID);
                 // Add the new cheese to my existing cheeses
-                Shoe newShoe = new Shoe
+                Shoe Shoe = new Shoe
                 {
                     Name = addShoeViewModel.Name,
                     Description = addShoeViewModel.Description,
                     Category = catg
                 };
 
-                context.Shoes.Add(newShoe);
+                context.Shoes.Add(Shoe);
                 context.SaveChanges();
 
                 return Redirect("/Shoe");
